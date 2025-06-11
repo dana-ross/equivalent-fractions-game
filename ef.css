@@ -1,0 +1,48 @@
+body {
+    background-color: #000;
+    color: #44ff44;
+}
+
+.score-display {
+    font-size: 2rem;
+}
+
+.question, .answer {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 1rem;
+}
+
+.equation > * {
+    display: inline-block;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.fraction {
+    max-width: 2rem;
+    text-align: center;
+}
+
+.answer {
+    /* height: fit-content;
+    width: fit-content; */
+    max-width: 500px;
+    border: 1px solid;
+    margin: 1rem;
+    background-color: #333;
+}
+
+.answerBoxCounter {
+    border: 1px solid #44ff44;
+    background-color: #000;
+    float: left;
+    box-sizing: border-box;
+    width: 75px;
+    height: 75px;
+}
+
+.answerBoxCounter.selected {
+    background-color: #44ff44;
+    border: #44ff44;
+}
