@@ -15,13 +15,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const scoreElement = document.getElementsByClassName('score')[0];
         scoreElement.innerHTML = score;
     }
+
+    const answerBoxClickHandler = (e) => {
+        if(e.target.classList.contains('selected')) {
+            e.target.classList.remove('selected');
+        }
+        else {
+            e.target.classList.add('selected');
+        }
+    }
     
     const newProblem = () => {
-
-        answerBoxElement.childNodes.forEach((node) => {
-            answerBoxElement.removeChild(node);
-            delete node;
-        });
+        answerBoxElement.innerHTML = '';
 
         denominator = Math.floor(Math.random() * 10 + 1);
         numerator = Math.floor(Math.random() * denominator + 1);
@@ -35,18 +40,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         denominatorElement.innerHTML = denominator;
 
         for(x = 0; x < answerDenominator; x++) {
-            const newBox = document.createElement('div');
+            let newBox = document.createElement('div');
             newBox.className = 'answerBoxCounter';
-            newBox.onclick = (e) => {
-                if(e.target.classList.contains('selected')) {
-                    e.target.classList.remove('selected');
-                }
-                else {
-                    e.target.classList.add('selected');
-                }
-                
-                
-            }
+            newBox.onclick = answerBoxClickHandler;
+            console.log(newBox);
             answerBoxElement.appendChild(newBox);
         }
     }
@@ -64,7 +61,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
         else {
             alert("incorrect");
-            score -= 100;
+            score -= 20;
             updateScore(score);
         }
     }
