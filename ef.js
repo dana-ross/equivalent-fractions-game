@@ -54,15 +54,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
     submitButtonElement.onclick = () => {
         const countOfSelectedBoxes = [...answerBoxElement.getElementsByClassName('answerBoxCounter')].filter((elem) => { return elem.classList.contains('selected')}).length || 0;
         if(countOfSelectedBoxes === numerator * answerFactor) {
-            alert("correct");
             score += 100;
             updateScore(score);
-            newProblem();
+
+            const correctElement = document.getElementsByClassName('correct')[0];
+            correctElement.style.display = 'inline-block'
+            setTimeout(() => {
+                correctElement.style.display = 'none';
+                newProblem();
+            }, 2000)
         }
         else {
-            alert("incorrect");
             score -= 20;
             updateScore(score);
+
+            const incorrectElement = document.getElementsByClassName('incorrect')[0];
+            incorrectElement.style.display = 'inline-block'
+            setTimeout(() => {
+                incorrectElement.style.display = 'none';
+            }, 2000)
+
         }
     }
 
